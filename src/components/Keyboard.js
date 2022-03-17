@@ -1,4 +1,3 @@
-
 import Key from "./Key";
 
 const Keyboard = () => {
@@ -23,7 +22,7 @@ const Keyboard = () => {
         <Key key={i} value={value} />
       ))}
       <button className="key large" data-enter>
-        Enter
+        Delete
       </button>
     </div>
   );

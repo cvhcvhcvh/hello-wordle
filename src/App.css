@@ -7,21 +7,29 @@
   margin: 0;
 }
 
-#screen{
+#screen {
   background-color: #111;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
-  /* margin: 0; */
+  height: 100vh;
+  margin: 0;
   font-size: clamp(0.5em, 2.5vmin, 1rem);
 }
-/* look up 2.5vmin
-*/
-h1{
+
+#game-container {
+  width: 100%;
+  max-width: 60vw;
+  margin: 0 auto;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
   color: #fff;
   text-align: center;
   border-bottom: 1px solid grey;
-  margin: 5px;
+  padding: 8px;
 }
 
 #keyboard {
@@ -88,47 +96,48 @@ lookup span 2
   --saturation: 25%;
 }
 
-#grid{
+#grid {
   display: grid;
   justify-content: center;
   align-content: center;
   flex-grow: 1;
   grid-template-columns: repeat(5, 3.75em);
   grid-template-rows: repeat(6, 3.75em);
-  gap: .35em;
+  gap: 0.35em;
   margin-bottom: 1em;
   margin-top: 1em;
 }
-.tile{
+
+.tile {
   font-size: 2em;
   color: white;
-  border: .05em solid #3a3a3a;
+  border: 0.05em solid #3a3a3a;
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   user-select: none;
-  transition: 250ms linear; 
+  transition: 250ms linear;
 }
-.tile[data-state="active"]{
+.tile[data-state="active"] {
   animation: zoom-in-zoom-out 50ms ease;
-  border-color: rgba(235, 235, 235, 0.432)
+  border-color: rgba(235, 235, 235, 0.432);
 }
-.tile[data-state="wrong"]{
+.tile[data-state="wrong"] {
   background-color: hsl(200, 1%, 20%);
   border: none;
 }
-.tile[data-state="present"]{
+.tile[data-state="present"] {
   background-color: hsl(50, 50%, 50%);
   border: none;
 }
-.tile[data-state="correct"]{
+.tile[data-state="correct"] {
   background-color: hsl(115, 25%, 50%);
   border: none;
 }
 
-.tile.shake{
+.tile.shake {
   animation: shake 250ms ease-in-out;
 }
 @keyframes zoom-in-zoom-out {
@@ -144,55 +153,55 @@ lookup span 2
 }
 @keyframes shake {
   10% {
-    transform: translateX(-5%)
+    transform: translateX(-5%);
   }
   30% {
-    transform: translateX(5%)
+    transform: translateX(5%);
   }
   50% {
-    transform: translateX(-7.5%)
+    transform: translateX(-7.5%);
   }
   70% {
-    transform: translateX(7.5%)
+    transform: translateX(7.5%);
   }
   90% {
-    transform: translateX(-5%)
+    transform: translateX(-5%);
   }
   100% {
-    transform: translateX(0)
+    transform: translateX(0);
   }
 }
 
 @keyframes dance {
   20% {
-    transform: translateY(-50%)
+    transform: translateY(-50%);
   }
   40% {
-    transform: translateY(5%)
+    transform: translateY(5%);
   }
   60% {
-    transform: translateY(-25%)
+    transform: translateY(-25%);
   }
   80% {
-    transform: translateY(2.5%)
+    transform: translateY(2.5%);
   }
   90% {
-    transform: translateY(-5%)
+    transform: translateY(-5%);
   }
   100% {
-    transform: translateY(0)
+    transform: translateY(0);
   }
 }
 
-.tile.flip{
+.tile.flip {
   transform: rotateX(90deg);
 }
 
 .tile.dance {
   animation: dance 500ms ease-in-out;
 }
-  
-.alert-container{
+
+.alert-container {
   position: fixed;
   top: 12vh;
   left: 50vw;
@@ -203,23 +212,22 @@ lookup span 2
   align-items: center;
 }
 
-.alert{
+.alert {
   font-weight: bold;
   pointer-events: none;
   background-color: #fff;
   padding: 1em;
-  border-radius: .25em;
+  border-radius: 0.25em;
   opacity: 1;
-  transition: opacity 500ms ease-in-out; 
+  transition: opacity 500ms ease-in-out;
   /* look up this ^ */
-  margin-bottom: .5em;
+  margin-bottom: 0.5em;
 }
 
-.alert:last-child{
+.alert:last-child {
   margin-bottom: 0;
 }
 
 .alert.hide {
   opacity: 0;
 }
-

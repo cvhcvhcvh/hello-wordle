@@ -1,8 +1,8 @@
 import React from "react";
 
 
-const Key = ({ children, value }) => {
-  return <button className="key">{children || value}</button>;
+const Key = ({ value }) => {
+  return <button className="key">{value}</button>;
 };
 
 export default Key;
