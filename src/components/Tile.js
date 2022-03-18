@@ -1,12 +1,10 @@
 import React from 'react'
 
 
-const Tile = ( {value} ) => {
-
-  value = "x";
+const Tile = () => {
   
   return (
-    <div className="tile">{value}</div>
+    <div className="tile"></div>
   )
 }
 
