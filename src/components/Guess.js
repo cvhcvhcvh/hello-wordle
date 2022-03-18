@@ -12,6 +12,7 @@ const Guess = ( {guess, submitted, correctWord} ) => {
         index={i}
         submitted={submitted}
         correctWord={correctWord}
+        value={guess[i]}
     />)
   }
   

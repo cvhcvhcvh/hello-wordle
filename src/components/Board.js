@@ -4,7 +4,7 @@ import Guess from "./Guess";
 const Board = () => {
   
   let history = ["booth", "water"];
-  let currentGuess = ""
+  let currentGuess = "wat"
   let correctWord = "tooth"
 
   let rows = [];

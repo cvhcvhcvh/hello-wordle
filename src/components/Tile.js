@@ -1,34 +1,44 @@
-import React from 'react'
+import React from "react";
 
-
-const Tile = ( {guess, submitted, index, correctWord} ) => {
+const Tile = ({ guess, submitted, index, correctWord, value }) => {
   
-  let content;
-  let className;
+  
+  if (submitted){
+    console.log("guess is", guess)
+  } 
 
-  let letter = guess[index]
+
+
+  let letter = guess[index];
+  let tile;
 
   if (letter) {
-    content = letter;
-    className = "tile active"
+    value = letter;
+    tile = "tile active";
   } else {
-    className = "tile"
+    value = ""
+    tile = "tile";
+  };
+
+  const flipTile = () => {
+    // ! to do, need to animate the flip then call getColor()
+    // getColor()
   }
 
-  if (letter === correctWord[index]){
-    className = "tile correct"
-  } else if (correctWord.indexOf(letter) === -1){
-    className = "tile wrong"
-  } else {
-    className = "tile present"
+  const getColor = () => {
+    if (letter === correctWord[index]) {
+      return "tile correct";
+    } else if (correctWord.indexOf(letter) === -1) {
+      return "tile wrong";
+    } else {
+      return "tile present";
+    }
   }
 
-  return (
-    <div className={submitted ? className : "tile"}>{content}</div>
-  )
+  return <div className={submitted ? getColor() : tile}>{value}</div>
+
 }
-
-export default Tile
+export default Tile;
 
 /*
 let BLACK = '#111'
