@@ -1,20 +1,23 @@
 import React from 'react'
 import Tile from './Tile'
 
-const Guess = ( {guess, solved} ) => {
+const Guess = ( {guess, submitted, correctWord} ) => {
 
-  let emptyTiles = [];
+  let tiles = [];
   for (let i = 0; i < 5; i++){
-    emptyTiles.push(
+    tiles.push(
       <Tile
         key={i}
         guess={guess}
+        index={i}
+        submitted={submitted}
+        correctWord={correctWord}
     />)
   }
   
   return (
     <div className="board row">
-     {emptyTiles}
+     {tiles}
     </div>
   );
 }

@@ -96,19 +96,19 @@ button {
   user-select: none;
   border: 2px solid rgba(128, 128, 128, 0.288);
 }
-.tile[data-state="active"] {
+.tile.active {
   animation: zoom-in-zoom-out 50ms ease;
   border-color: rgba(235, 235, 235, 0.432);
 }
-.tile[data-state="wrong"] {
+.tile.wrong {
   background-color: hsl(200, 1%, 20%);
   border: none;
 }
-.tile[data-state="present"] {
+.tile.present {
   background-color: hsl(50, 50%, 50%);
   border: none;
 }
-.tile[data-state="correct"] {
+.tile.correct {
   background-color: hsl(115, 25%, 50%);
   border: none;
 }

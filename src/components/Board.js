@@ -1,33 +1,38 @@
-import Tile from "./Tile";
+
 import Guess from "./Guess";
 
 const Board = () => {
-
-  let history = ["piano", "horse"];
-  let currentGuess = "wat"
+  
+  let history = ["booth", "water"];
+  let currentGuess = ""
+  let correctWord = "tooth"
 
   let rows = [];
-  for (let i = 0; i < 6; i++) {
+  for (let i = 0; i < 6; i++) { // 
     if (i < history.length) {
       rows.push(
         <Guess 
           key={i}
           guess={history[i]}
-          solved={true}
+          correctWord={correctWord}
+          submitted={true}
         />);
     } else if(i === history.length){
       rows.push(
         <Guess
           key={i}
           guess={currentGuess}
-          solved={false}
-      />)
+          correctWord={correctWord}
+          submitted={false}
+        />
+      );
     } else {
       rows.push(
         <Guess 
           key={i} 
           guess=""
-          solved={false} 
+          correctWord={correctWord}
+          submitted={false} 
       />);
     }
   }
