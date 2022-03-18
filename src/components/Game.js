@@ -1,17 +1,19 @@
 import React from "react";
-import Grid from "./Grid";
+import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
 
 const Game = () => {
   return (
-    <div id="screen">
+    <>
       <Header />
-      <div id="game-container">
-        <Grid />
+      <div id="game">
+        <div id="board-container">
+          <Board />
+        </div>
         <Keyboard />
       </div>
-    </div>
+    </>
   );
 };
 

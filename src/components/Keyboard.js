@@ -7,23 +7,29 @@ const Keyboard = () => {
 
   return (
     <div id="keyboard">
-      {keys1.map((value, i) => (
-        <Key key={i} value={value} />
-      ))}
-      <div className="space"></div>
-      {keys2.map((value, i) => (
-        <Key key={i} value={value} />
-      ))}
-      <div className="space"></div>
-      <button className="key large" data-enter>
-        Enter
-      </button>
-      {keys3.map((value, i) => (
-        <Key key={i} value={value} />
-      ))}
-      <button className="key large" data-enter>
-        Delete
-      </button>
+      <div className="keyboard row">
+        {keys1.map((value, i) => (
+          <Key key={i} value={value} />
+        ))}
+      </div>
+      <div className="keyboard row">
+        <div className="spacer half"></div>
+        {keys2.map((value, i) => (
+          <Key key={i} value={value} />
+        ))}
+        <div className="spacer half"></div>
+      </div>
+      <div className="keyboard row">
+        <button data-key="↵" className="one-and-a-half">
+          enter
+        </button>
+        {keys3.map((value, i) => (
+          <Key key={i} value={value} />
+        ))}
+        <button data-key="←" className="one-and-a-half">
+          delete
+        </button>
+      </div>
     </div>
   );
 };
