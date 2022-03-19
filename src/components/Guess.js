@@ -8,14 +8,14 @@ const Guess = ( {guess, submitted, correctWord} ) => {
     tiles.push(
       <Tile
         key={i}
-        guess={guess}
+        guess={guess} // re-render => smile (in history)
         index={i}
-        submitted={submitted}
+        submitted={submitted} // 
         correctWord={correctWord}
-        value={guess[i]}
-    />)
+      />
+    );
   }
-  
+
   return (
     <div className="board row">
      {tiles}

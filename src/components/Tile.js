@@ -1,41 +1,48 @@
 import React from "react";
 
-const Tile = ({ guess, submitted, index, correctWord, value }) => {
-  
-  
-  if (submitted){
-    console.log("guess is", guess)
-  } 
+const Tile = ({ guess, submitted, index, correctWord }) => {
 
-  let letter = guess[index];
-  let tile;
+  let BLACK = "#111";
+  let GREY = "#212121";
+  let MIDDLEGREY = "#666";
+  let LIGHTGREY = "#888";
+  let GREEN = "#538d4e";
+  let YELLOW = "#b59f3b";
 
-  if (letter) {
-    value = letter;
-    tile = "tile active";
+  let content;
+  if (guess[index] !== undefined) {
+    content = guess[index];
   } else {
-    value = ""
-    tile = "tile";
-  };
+    content = "";
+  }
+  function getBgColor(guess, i) {
+    let correctLetter = correctWord[i];
+    let attemptLetter = guess[i];
+    if (attemptLetter === undefined || correctWord.indexOf(attemptLetter) === -1) {
+      return GREY;
+    }
+    if (correctLetter === attemptLetter) {
+      return GREEN;
+    }
+    return YELLOW;
+  }
+  let color = getBgColor(guess, index)
+  
 
   const flipTile = () => {
-    // ! to do, need to animate the flip then call getColor()
+    // ! todo, need to animate the flip then call getColor()
     // getColor()
-  }
+  };
 
-  const getColor = () => {
-    if (letter === correctWord[index]) {
-      return "tile correct";
-    } else if (correctWord.indexOf(letter) === -1) {
-      return "tile wrong";
-    } else {
-      return "tile present";
-    }
-  }
-
-  return <div className={submitted ? getColor() : tile}>{value}</div>
-
-}
+  return <div 
+    className="tile"  
+    style={{
+            backgroundColor: color,
+            borderColor: color
+          }}>
+      {content}
+    </div>;
+};
 export default Tile;
 
 /*
