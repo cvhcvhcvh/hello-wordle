@@ -1,11 +1,48 @@
-
+import { useState, useEffect } from "react";
 import Guess from "./Guess";
+// /* eslint-disable */
+
+let wordList = [
+  "piano", 
+  "smile", 
+  "horse", 
+  "bling", 
+  "cater",
+  "paper", 
+  "panic", 
+  "right", 
+  "thing"
+]
 
 const Board = () => {
-  
-  let history = ["booth", "water"];
-  let currentGuess = "wat"
-  let correctWord = "tooth"
+  let correctWord = "piano";
+  let [history, setHistory] = useState([])
+  let [currentGuess, setCurrentGuess] = useState("")
+
+  function handleKeyDown(e) {
+    if (e.ctrlKey || e.metaKey || e.altKey){
+      return 
+    }
+    if (history.length === 6) {
+      return
+    }
+    let key = e.key;
+   
+    let letter = key.toLowerCase();
+    if (letter === "enter") {
+      if (currentGuess.length < 5){
+        return
+      }
+      if (!wordList.includes(letter)){
+        console.log("hey")
+      }
+    }
+  }
+
+  useEffect(() => {
+    window.addEventListener("keydown", handleKeyDown)
+    return () => window.removeEventListener("keydown"), handleKeyDown
+  })
 
   let rows = [];
   for (let i = 0; i < 6; i++) { // 

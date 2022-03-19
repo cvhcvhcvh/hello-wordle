@@ -7,8 +7,6 @@ const Tile = ({ guess, submitted, index, correctWord, value }) => {
     console.log("guess is", guess)
   } 
 
-
-
   let letter = guess[index];
   let tile;
 

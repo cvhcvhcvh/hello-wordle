@@ -1,4 +1,3 @@
-
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
