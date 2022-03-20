@@ -15,7 +15,6 @@ const Tile = ({ guess, submitted, index, correctWord }) => {
     content = "";
   }
   if (!submitted) {
-
   }
   function getBgColor(guess, index) {
     let correctLetter = correctWord[index];
@@ -31,13 +30,25 @@ const Tile = ({ guess, submitted, index, correctWord }) => {
     }
     return "present";
   }
-  let color = getBgColor(guess, index)
+  let color = getBgColor(guess, index);
 
   const flipTile = () => {
     // ! todo, need to animate the flip then call getColor()
     // getColor()
   };
 
-  return <div className={submitted ? `tile ${color}` : "tile" }>{content}</div>;
+  return (
+    <div
+      className={
+        submitted
+          ? `tile ${color}`
+          : !submitted && `${content}`
+          ? "tile active"
+          : "tile"
+      }
+    >
+      {content}
+    </div>
+  );
 };
 export default Tile;
