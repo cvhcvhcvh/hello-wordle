@@ -8,14 +8,14 @@ const Keyboard = () => {
   return (
     <div id="keyboard">
       <div className="keyboard row">
-        {keys1.map((key) => (
-          <Key key={key} value={key} />
+        {keys1.map((letter) => (
+          <Key key={letter} value={letter} />
         ))}
       </div>
       <div className="keyboard row">
         <div className="spacer half"></div>
-        {keys2.map((key) => (
-          <Key key={key} value={key} />
+        {keys2.map((letter) => (
+          <Key key={letter} value={letter} />
         ))}
         <div className="spacer half"></div>
       </div>
@@ -25,8 +25,8 @@ const Keyboard = () => {
           className="one-and-a-half">
             enter
         </button>
-        {keys3.map((key) => (
-          <Key key={key} value={key} />
+        {keys3.map((letter) => (
+          <Key key={letter} value={letter} />
         ))}
         <button     
           key="delete"

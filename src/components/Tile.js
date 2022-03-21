@@ -1,6 +1,6 @@
 import React from "react";
 
-const Tile = ({ guess, submitted, index, correctWord }) => {
+const Tile = ({ guess, submitted, index, secret }) => {
   let BLACK = "#111";
   let GREY = "#212121";
   let MIDDLEGREY = "#666";
@@ -14,14 +14,13 @@ const Tile = ({ guess, submitted, index, correctWord }) => {
   } else {
     content = "";
   }
-  if (!submitted) {
-  }
+
   function getBgColor(guess, index) {
-    let correctLetter = correctWord[index];
+    let correctLetter = secret[index];
     let attemptLetter = guess[index];
     if (
       attemptLetter === undefined ||
-      correctWord.indexOf(attemptLetter) === -1
+      secret.indexOf(attemptLetter) === -1
     ) {
       return "wrong";
     }
@@ -45,7 +44,7 @@ const Tile = ({ guess, submitted, index, correctWord }) => {
           : !submitted && `${content}`
           ? "tile active"
           : "tile"
-      }
+        }
     >
       {content}
     </div>

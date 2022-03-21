@@ -1,17 +1,18 @@
 import React from 'react'
 import Tile from './Tile'
 
-const Guess = ( {guess, submitted, correctWord} ) => {
+const Guess = ( {guess, submitted, secret} ) => {
+
 
   let tiles = [];
   for (let i = 0; i < 5; i++){
     tiles.push(
       <Tile
         key={i}
-        guess={guess} // re-render => smile (in history)
+        guess={guess} 
         index={i}
-        submitted={submitted} // 
-        correctWord={correctWord}
+        submitted={submitted}
+        secret={secret}
       />
     );
   }
