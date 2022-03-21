@@ -1,6 +1,6 @@
 import Key from "./Key";
 
-const Keyboard = () => {
+const Keyboard = ({ history, currentGuess, secret, onKey }) => {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
@@ -8,31 +8,61 @@ const Keyboard = () => {
   return (
     <div id="keyboard">
       <div className="keyboard row">
-        {keys1.map((letter) => (
-          <Key key={letter} value={letter} />
+        {keys1.map((letter, i) => (
+          <Key
+            key={letter}
+            value={letter}
+            history={history}
+            currentGuess={currentGuess}
+            secret={secret}
+            index={i}
+            onKey={onKey}
+          />
         ))}
       </div>
       <div className="keyboard row">
         <div className="spacer half"></div>
-        {keys2.map((letter) => (
-          <Key key={letter} value={letter} />
+        {keys2.map((letter, i) => (
+          <Key
+            key={letter}
+            value={letter}
+            history={history}
+            currentGuess={currentGuess}
+            secret={secret}
+            index={i}
+            onKey={onKey}
+          />
         ))}
         <div className="spacer half"></div>
       </div>
       <div className="keyboard row">
-        <button 
-          key="enter" 
-          className="one-and-a-half">
-            enter
-        </button>
-        {keys3.map((letter) => (
-          <Key key={letter} value={letter} />
+        <Key
+          key="enter"
+          className="one-and-a-half"
+          onKey={onKey}
+          value="enter"
+        >
+          enter
+        </Key>
+        {keys3.map((letter, i) => (
+          <Key
+            key={letter}
+            value={letter}
+            history={history}
+            currentGuess={currentGuess}
+            secret={secret}
+            index={i}
+            onKey={onKey}
+          />
         ))}
-        <button     
+        <Key
           key="delete"
-          className="one-and-a-half">
-            delete
-        </button>
+          className="one-and-a-half"
+          onKey={onKey}
+          value="delete"
+        >
+          delete
+        </Key>
       </div>
     </div>
   );

@@ -42,6 +42,23 @@
   font-size: 12px;
 }
 button {
+  font-weight: bold;
+  border: 0;
+  padding: 0;
+  margin: 0 6px 0 0;
+  height: 58px;
+  border-radius: 4px;
+  cursor: pointer;
+  user-select: none;
+  background-color: rgba(211, 211, 211, 0.63);
+  color: white;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+.key {
   /* font-family: inherit; */
   font-weight: bold;
   border: 0;
@@ -58,6 +75,18 @@ button {
   justify-content: center;
   align-items: center;
   text-transform: uppercase;
+}
+.key.correct {
+  background-color: hsl(115, 25%, 50%);
+  border: none;
+}
+.key.wrong {
+  background-color: hsl(200, 1%, 20%);
+  border: none;
+}
+.key.present {
+  background-color: hsl(50, 50%, 50%);
+  border: none;
 }
 
 #board {
