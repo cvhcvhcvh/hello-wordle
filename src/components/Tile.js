@@ -15,20 +15,6 @@ const Tile = ({ guess, submitted, index, secret }) => {
     content = "";
   }
 
-  function makeSecretObject(secret){
-    let obj = {}
-    for (let letter of secret) {
-      if (obj[letter] === undefined){
-        obj[letter] = 1
-      } else {
-        obj[letter]++
-      }
-    }
-    return obj
-  }
-
-  let secretObject = makeSecretObject(secret)
-
   function getBgColor(guess, index) {
     let correctLetter = secret[index];
     let attemptLetter = guess[index];
@@ -44,6 +30,7 @@ const Tile = ({ guess, submitted, index, secret }) => {
     return "present";
   }
   let color = getBgColor(guess, index);
+ 
 
   const flipTile = () => {
     // ! todo, need to animate the flip then call getColor()
