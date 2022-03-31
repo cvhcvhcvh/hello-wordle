@@ -10,7 +10,23 @@ const Game = () => {
 
   const words = ["smile", "happy", "world", "snake", "patio", "piano"];
 
-  let secret = words[0];
+  let secret = words[1];
+
+  useEffect(() => {
+    if (loadedRef.current){
+      return 
+    }
+    loadedRef.current = true;
+
+    let savedHistory = loadHistory()
+    if (savedHistory){
+      setHistory(savedHistory)
+    }
+  });
+  
+  useEffect(() => {
+    saveHistory()
+  }, [history])
 
   function loadHistory() {
     let data;
@@ -34,7 +50,6 @@ const Game = () => {
     } catch {}
   }
 
-  useEffect(() => {});
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
