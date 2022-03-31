@@ -2327,10 +2327,9 @@ let array = [
 ];
 let wordList = shuffle(array);
 
-function makeWordObject() {
-  let wordsArray = ["hello", "world", "smile", "happy"];
+function makeWordObject(words) {
   let fullDate = new Date();
-  let wordleObject = wordsArray.reduce((wordsObject, word) => {
+  let wordleObject = words.reduce((wordsObject, word) => {
     let shortDate =
       fullDate.getMonth() +
       "-" +
@@ -2341,5 +2340,7 @@ function makeWordObject() {
     fullDate.setDate(fullDate.getDate() + 1);
     return wordsObject;
   }, {});
+  return wordleObject
 }
 
+console.log(makeWordObject(wordList));
