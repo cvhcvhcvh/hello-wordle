@@ -6,7 +6,7 @@ import Header from "./Header";
 const Game = () => {
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
-  let [secret, setSecret] = useState("");
+  // let [secret, setSecret] = useState("");
   let [wordList, setWordList] = useState([]);
 
   // function getRandomIdx() {
@@ -25,7 +25,9 @@ const Game = () => {
     // const randomIdx = Math.floor(Math.random() * wordList.length)
     // const word = wordList[randomIdx];
   };
-  console.log(wordList);
+
+
+  let secret = "world"
 
   useEffect(() => {
     getWords();
@@ -88,7 +90,8 @@ const Game = () => {
   // }
   // let color = getBgColor(currentGuess, secret);
   return (
-    <>
+
+    <div className="header-line">
       <Header />
       <div id="game">
         <div id="board-container">
@@ -107,7 +110,8 @@ const Game = () => {
           onKey={handleKey}
         />
       </div>
-    </>
+    </div>
+
   );
 };
 
