@@ -1,29 +1,11 @@
-let wordsArray = ["hello", "world", "smile", "happy"];
-
-let fullDate = new Date();
-let wordleObject = wordsArray.reduce((wordsObject, word) => {
-  let shortDate =
-    fullDate.getMonth() +
-    "-" +
-    fullDate.getDate() +
-    "-" +
-    fullDate.getFullYear();
-  wordsObject[shortDate] = word;
-  fullDate.setDate(fullDate.getDate() + 1);
-  return wordsObject;
-}, {});
-
 function shuffle(array) {
   let currentIndex = array.length,
     randomIndex;
 
-  // While there remain elements to shuffle...
   while (currentIndex != 0) {
-    // Pick a remaining element...
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
 
-    // And swap it with the current element.
     [array[currentIndex], array[randomIndex]] = [
       array[randomIndex],
       array[currentIndex],
@@ -31,7 +13,6 @@ function shuffle(array) {
   }
   return array;
 }
-
 
 let array = [
   "cigar",
@@ -2345,4 +2326,20 @@ let array = [
   "fanny",
 ];
 let wordList = shuffle(array);
+
+function makeWordObject() {
+  let wordsArray = ["hello", "world", "smile", "happy"];
+  let fullDate = new Date();
+  let wordleObject = wordsArray.reduce((wordsObject, word) => {
+    let shortDate =
+      fullDate.getMonth() +
+      "-" +
+      fullDate.getDate() +
+      "-" +
+      fullDate.getFullYear();
+    wordsObject[shortDate] = word;
+    fullDate.setDate(fullDate.getDate() + 1);
+    return wordsObject;
+  }, {});
+}
 
