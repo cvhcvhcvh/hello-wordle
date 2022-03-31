@@ -22,6 +22,8 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  /* justify-content: center; */
 }
 
 #keyboard {
@@ -89,6 +91,13 @@ button {
   border: none;
 }
 
+#board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+}
 #board {
   width: 350px;
   height: 420px;
@@ -97,13 +106,6 @@ button {
   grid-gap: 5px;
   padding: 10px;
   box-sizing: border-box;
-}
-#board-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  overflow: hidden;
 }
 .board.row {
   display: grid;

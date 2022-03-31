@@ -1,40 +1,49 @@
-import {useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
 
 const Game = () => {
-  let wordList = [
-    "piano",
-    "smile",
-    "horse",
-    "bling",
-    "cater",
-    "paper",
-    "panic",
-    "right",
-    "thing",
-  ];
-
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
-  let secret = "thing";
+  let [secret, setSecret] = useState("");
+  let [wordList, setWordList] = useState([]);
+
+  // function getRandomIdx() {
+  //   let idx = Math.floor(Math.random() * wordList.length)
+  //   return idx
+  // }
+
+  const getWords = () => {
+    fetch("words.json", {})
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (words) {
+        return setWordList(words);
+      });
+    // const randomIdx = Math.floor(Math.random() * wordList.length)
+    // const word = wordList[randomIdx];
+  };
+  console.log(wordList);
+
+  useEffect(() => {
+    getWords();
+  }, []);
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   });
 
-  function handleKeyDown(e){
+  function handleKeyDown(e) {
     if (e.ctrlKey || e.metaKey || e.altKey) {
       return;
     }
-    handleKey(e.key)
+    handleKey(e.key);
   }
-  
 
   function handleKey(e) {
-    
     if (history.length === 6) {
       return;
     }
