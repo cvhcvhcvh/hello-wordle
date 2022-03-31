@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
@@ -6,32 +6,35 @@ import Header from "./Header";
 const Game = () => {
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
-  // let [secret, setSecret] = useState("");
-  let [wordList, setWordList] = useState([]);
+  let loadedRef = useRef(false);
 
-  // function getRandomIdx() {
-  //   let idx = Math.floor(Math.random() * wordList.length)
-  //   return idx
-  // }
+  const words = ["smile", "happy", "world", "snake", "patio", "piano"];
 
-  const getWords = () => {
-    fetch("words.json", {})
-      .then(function (response) {
-        return response.json();
-      })
-      .then(function (words) {
-        return setWordList(words);
-      });
-    // const randomIdx = Math.floor(Math.random() * wordList.length)
-    // const word = wordList[randomIdx];
-  };
+  let secret = words[0];
 
+  function loadHistory() {
+    let data;
+    try {
+      data = JSON.parse(localStorage.getItem("data"))
+    } catch {}
+    if (data != null){
+      if (data.secret === secret){
+        return data.history
+      }
+    }
+  }
 
-  let secret = "world"
+  function saveHistory() {
+    let data = JSON.stringify({
+      secret, 
+      history
+    })
+    try {
+      localStorage.setItem("data", data)
+    } catch {}
+  }
 
-  useEffect(() => {
-    getWords();
-  }, []);
+  useEffect(() => {});
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
@@ -56,7 +59,7 @@ const Game = () => {
         alert("not enough letters");
         return;
       }
-      if (!wordList.includes(currentGuess)) {
+      if (!words.includes(currentGuess)) {
         alert("word not in list");
         return;
       }
@@ -90,7 +93,6 @@ const Game = () => {
   // }
   // let color = getBgColor(currentGuess, secret);
   return (
-
     <div className="header-line">
       <Header />
       <div id="game">
@@ -111,7 +113,6 @@ const Game = () => {
         />
       </div>
     </div>
-
   );
 };
 
