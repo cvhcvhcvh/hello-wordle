@@ -4,7 +4,8 @@ import Guess from "./Guess";
 const Board = ({
   history, 
   currentGuess, 
-  secret
+  secret, 
+  // getBgColor
 }) => {
  
   let rows = [];
@@ -16,6 +17,7 @@ const Board = ({
           key={i}
           guess={history[i]}
           secret={secret} // 
+          // getBgColor={getBgColor}
           submitted={true} //
         />
       );
@@ -24,7 +26,8 @@ const Board = ({
         <Guess
           key={i}
           guess={currentGuess}
-          secret={secret} //
+          secret={secret}
+          // getBgColor={getBgColor}
           submitted={false}
         />
       );
@@ -34,6 +37,7 @@ const Board = ({
           key={i}
           guess=""
           secret={secret} //
+          // getBgColor={getBgColor}
           submitted={false}
         />
       );

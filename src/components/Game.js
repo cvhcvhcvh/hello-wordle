@@ -6,10 +6,10 @@ import Header from "./Header";
 const Game = () => {
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
-  let [secret, setSecret] = useState("piano");
+  let [secret, setSecret] = useState("horse");
   let loadedRef = useRef(false);
 
-  const words = ["smile", "happy", "world", "snake", "patio", "piano"];
+  const words = ["smile", "happy", "horse", "world", "snake", "patio", "piano"];
 
   useEffect(() => {
     if (loadedRef.current) {
@@ -90,19 +90,7 @@ const Game = () => {
       }
     }
   }
-  // function getBgColor(guess, secret) {
-  //   for (let i = 0; i < guess.length; i++){
-  //     let correctLetter = secret[i];
-  //     let attemptLetter = guess[i];
-  //     if (attemptLetter === undefined || secret.indexOf(attemptLetter) === -1) {
-  //       return "wrong";
-  //     }
-  //     if (correctLetter === attemptLetter) {
-  //       return "correct";
-  //     }
-  //     return "present";
-  //   }
-  // }
+  
   // let color = getBgColor(currentGuess, secret);
   return (
     <div className="header-line">

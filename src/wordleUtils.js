@@ -2343,5 +2343,18 @@ function makeWordObject(words) {
   return wordleObject
 }
 
-console.log(makeWordObject(wordList));
+  export function getBgColor(guess, secret, index) {
+    let correctLetter = secret[index];
+    let attemptLetter = guess[index];
+    if (
+      attemptLetter === undefined ||
+      secret.indexOf(attemptLetter) === -1
+    ) {
+      return "wrong";
+    }
+    if (correctLetter === attemptLetter) {
+      return "correct";
+    }
+    return "present";
+  }
 

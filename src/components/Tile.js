@@ -1,4 +1,5 @@
 import React from "react";
+import { getBgColor } from "../wordleUtils";
 
 const Tile = ({ guess, submitted, index, secret }) => {
   let BLACK = "#111";
@@ -15,21 +16,21 @@ const Tile = ({ guess, submitted, index, secret }) => {
     content = "";
   }
 
-  function getBgColor(guess, index) {
-    let correctLetter = secret[index];
-    let attemptLetter = guess[index];
-    if (
-      attemptLetter === undefined ||
-      secret.indexOf(attemptLetter) === -1
-    ) {
-      return "wrong";
-    }
-    if (correctLetter === attemptLetter) {
-      return "correct";
-    }
-    return "present";
-  }
-  let color = getBgColor(guess, index);
+  // function getBgColor(guess, index) {
+  //   let correctLetter = secret[index];
+  //   let attemptLetter = guess[index];
+  //   if (
+  //     attemptLetter === undefined ||
+  //     secret.indexOf(attemptLetter) === -1
+  //   ) {
+  //     return "wrong";
+  //   }
+  //   if (correctLetter === attemptLetter) {
+  //     return "correct";
+  //   }
+  //   return "present";
+  // }
+  let color = getBgColor(guess, secret, index);
  
 
   const flipTile = (tile) => {

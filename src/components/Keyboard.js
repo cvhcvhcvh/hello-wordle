@@ -1,10 +1,17 @@
 import Key from "./Key";
+import { getBgColor } from "../wordleUtils";
 
 const Keyboard = ({ history, currentGuess, secret, onKey }) => {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
 
+  // let bestColors = new Map();
+  // for (let guess of history) {
+  //   for (let i = 0; i < guess.length; i++){
+  //     let color = 
+  //   }
+  // }
   return (
     <div id="keyboard">
       <div className="keyboard row">
@@ -36,12 +43,7 @@ const Keyboard = ({ history, currentGuess, secret, onKey }) => {
         <div className="spacer half"></div>
       </div>
       <div className="keyboard row">
-        <Key
-          key="enter"
-          className="one-and-a-half"
-          onKey={onKey}
-          value="enter"
-        >
+        <Key key="enter" className="one-and-a-half" onKey={onKey} value="enter">
           enter
         </Key>
         {keys3.map((letter, i) => (
