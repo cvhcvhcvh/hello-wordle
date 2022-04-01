@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
+import { getBgColor } from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
@@ -10,6 +11,38 @@ const Game = () => {
   let loadedRef = useRef(false);
 
   const words = ["smile", "happy", "horse", "world", "snake", "patio", "piano"];
+
+  function getBetterColor(a, b) {
+    let GREY = "#212121";
+    let GREEN = "#538d4e";
+    let YELLOW = "#b59f3b";
+
+    if (a === GREEN || b === GREEN) {
+      return GREEN;
+    }
+
+    if (a === YELLOW || b === YELLOW) {
+      return YELLOW;
+    }
+    return GREY;
+  }
+
+  let bestColors = useMemo(() => {
+    // guess = "horse", secret = "horse"
+    let map = new Map(); // {}
+    for (let guess of history) {
+      // horse
+      for (let i = 0; i < guess.length; i++) {
+        // i = 0
+        let letter = guess[i]; // h
+        let color = getBgColor(guess, secret, i); // grey
+        let storedColor = map.get(letter); // grey
+        map.set(letter, getBetterColor(color, storedColor)); // o => (grey, grey)
+        // map { t => grey, o => yellow }
+      }
+    }
+    return map;
+  }, [history]);
 
   useEffect(() => {
     if (loadedRef.current) {
@@ -90,7 +123,7 @@ const Game = () => {
       }
     }
   }
-  
+
   // let color = getBgColor(currentGuess, secret);
   return (
     <div className="header-line">
@@ -110,6 +143,7 @@ const Game = () => {
           currentGuess={currentGuess}
           secret={secret}
           onKey={handleKey}
+          bestColors={bestColors}
         />
       </div>
     </div>

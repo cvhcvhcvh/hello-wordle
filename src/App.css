@@ -73,7 +73,7 @@ button {
   border-radius: 4px;
   cursor: pointer;
   user-select: none;
-  background-color: rgba(211, 211, 211, 0.63);
+  /* background-color: rgba(211, 211, 211, 0.63); */
   color: white;
   flex: 1;
   display: flex;

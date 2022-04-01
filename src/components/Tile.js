@@ -2,13 +2,6 @@ import React from "react";
 import { getBgColor } from "../wordleUtils";
 
 const Tile = ({ guess, submitted, index, secret }) => {
-  let BLACK = "#111";
-  let GREY = "#212121";
-  let MIDDLEGREY = "#666";
-  let LIGHTGREY = "#888";
-  let GREEN = "#538d4e";
-  let YELLOW = "#b59f3b";
-
   let content;
   if (guess[index]) {
     content = guess[index];
@@ -31,27 +24,26 @@ const Tile = ({ guess, submitted, index, secret }) => {
   //   return "present";
   // }
   let color = getBgColor(guess, secret, index);
- 
 
-  const flipTile = (tile) => {
+  function getTile() {
     if (submitted) {
-      console.log(tile)
+      return (
+        <div className={"tile"} style={{ backgroundColor: color }}>
+          {content}
+        </div>
+      );
+    } else if (!submitted && content) {
+      return <div className="tile active">{content}</div>;
+    } else {
+      return <div className="tile">{content}</div>;
     }
-    // getColor()
-  };
+  }
 
   return (
-    <div
-      className={
-        submitted
-          ? `tile ${color}`
-          : !submitted && `${content}`
-          ? "tile active"
-          : "tile"
-        }
-    >
-      {content}
-    </div>
-  );
+    <>
+      {getTile()}
+    </>
+  )
 };
+
 export default Tile;

@@ -2343,6 +2343,10 @@ function makeWordObject(words) {
   return wordleObject
 }
 
+ let GREY = "#212121";
+ let GREEN = "#538d4e";
+ let YELLOW = "#b59f3b";
+
   export function getBgColor(guess, secret, index) {
     let correctLetter = secret[index];
     let attemptLetter = guess[index];
@@ -2350,11 +2354,11 @@ function makeWordObject(words) {
       attemptLetter === undefined ||
       secret.indexOf(attemptLetter) === -1
     ) {
-      return "wrong";
+      return GREY;
     }
     if (correctLetter === attemptLetter) {
-      return "correct";
+      return GREEN;
     }
-    return "present";
+    return YELLOW;
   }
 

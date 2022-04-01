@@ -1,17 +1,12 @@
 import Key from "./Key";
 import { getBgColor } from "../wordleUtils";
 
-const Keyboard = ({ history, currentGuess, secret, onKey }) => {
-  const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
-  const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
-  const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
+const Keyboard = ({ history, currentGuess, secret, onKey, bestColors }) => {
+  const keys1 = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
+  const keys2 = ["a", "s", "d", "f", "g", "h", "j", "k", "l"];
+  const keys3 = ["z", "x", "c", "v", "b", "n", "m"];
 
-  // let bestColors = new Map();
-  // for (let guess of history) {
-  //   for (let i = 0; i < guess.length; i++){
-  //     let color = 
-  //   }
-  // }
+ 
   return (
     <div id="keyboard">
       <div className="keyboard row">
@@ -24,6 +19,7 @@ const Keyboard = ({ history, currentGuess, secret, onKey }) => {
             secret={secret}
             index={i}
             onKey={onKey}
+            color={bestColors.get(letter)}
           />
         ))}
       </div>
@@ -38,6 +34,7 @@ const Keyboard = ({ history, currentGuess, secret, onKey }) => {
             secret={secret}
             index={i}
             onKey={onKey}
+            color={bestColors.get(letter)}
           />
         ))}
         <div className="spacer half"></div>
@@ -55,6 +52,7 @@ const Keyboard = ({ history, currentGuess, secret, onKey }) => {
             secret={secret}
             index={i}
             onKey={onKey}
+            color={bestColors.get(letter)}
           />
         ))}
         <Key
