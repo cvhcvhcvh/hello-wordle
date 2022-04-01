@@ -12,18 +12,18 @@ const Game = () => {
 
   let secret = words[1];
 
+
   useEffect(() => {
     if (loadedRef.current){
       return 
     }
     loadedRef.current = true;
-
     let savedHistory = loadHistory()
     if (savedHistory){
       setHistory(savedHistory)
     }
   });
-  
+
   useEffect(() => {
     saveHistory()
   }, [history])
@@ -33,10 +33,8 @@ const Game = () => {
     try {
       data = JSON.parse(localStorage.getItem("data"))
     } catch {}
-    if (data != null){
-      if (data.secret === secret){
-        return data.history
-      }
+    if (data != null && data.secret === secret){
+      return data.history;
     }
   }
 
@@ -49,7 +47,6 @@ const Game = () => {
       localStorage.setItem("data", data)
     } catch {}
   }
-
 
   useEffect(() => {
     window.addEventListener("keydown", handleKeyDown);
