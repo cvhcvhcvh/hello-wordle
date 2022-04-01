@@ -32,8 +32,10 @@ const Tile = ({ guess, submitted, index, secret }) => {
   let color = getBgColor(guess, index);
  
 
-  const flipTile = () => {
-    // ! todo, need to animate the flip then call getColor()
+  const flipTile = (tile) => {
+    if (submitted) {
+      console.log(tile)
+    }
     // getColor()
   };
 

@@ -132,7 +132,7 @@ button {
 }
 .tile.active {
   animation: zoom-in-zoom-out 50ms ease;
-  border-color: rgba(235, 235, 235, 0.432);
+  border-color: rgba(235, 235, 235, 0.244);
 }
 .tile.wrong {
   background-color: hsl(200, 1%, 20%);
@@ -201,10 +201,6 @@ button {
   100% {
     transform: translateY(0);
   }
-}
-
-.tile.flip {
-  transform: rotateX(90deg);
 }
 
 .tile.dance {

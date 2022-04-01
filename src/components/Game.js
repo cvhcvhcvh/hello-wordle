@@ -6,45 +6,45 @@ import Header from "./Header";
 const Game = () => {
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
+  let [secret, setSecret] = useState("piano");
   let loadedRef = useRef(false);
 
   const words = ["smile", "happy", "world", "snake", "patio", "piano"];
 
-  let secret = words[1];
-
-
   useEffect(() => {
-    if (loadedRef.current){
-      return 
+    if (loadedRef.current) {
+      return;
     }
     loadedRef.current = true;
-    let savedHistory = loadHistory()
-    if (savedHistory){
-      setHistory(savedHistory)
+    let savedHistory = loadHistory();
+    if (savedHistory) {
+      setHistory(savedHistory);
     }
   });
 
   useEffect(() => {
-    saveHistory()
-  }, [history])
+    saveHistory();
+  }, [history]);
 
   function loadHistory() {
     let data;
     try {
-      data = JSON.parse(localStorage.getItem("data"))
+      data = JSON.parse(localStorage.getItem("data"));
     } catch {}
-    if (data != null && data.secret === secret){
-      return data.history;
+    if (data != null) {
+      if (data.secret === secret) {
+        return data.history;
+      }
     }
   }
 
   function saveHistory() {
     let data = JSON.stringify({
-      secret, 
-      history
-    })
+      secret,
+      history,
+    });
     try {
-      localStorage.setItem("data", data)
+      localStorage.setItem("data", data);
     } catch {}
   }
 
