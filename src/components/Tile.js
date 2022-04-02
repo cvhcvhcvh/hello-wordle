@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { getBgColor } from "../wordleUtils";
 
 const Tile = ({ guess, submitted, index, secret }) => {
+  let [animated, setAnimated] = useState(false);
+
   let content;
   if (guess[index]) {
     content = guess[index];
@@ -9,41 +11,48 @@ const Tile = ({ guess, submitted, index, secret }) => {
     content = "";
   }
 
-  // function getBgColor(guess, index) {
-  //   let correctLetter = secret[index];
-  //   let attemptLetter = guess[index];
-  //   if (
-  //     attemptLetter === undefined ||
-  //     secret.indexOf(attemptLetter) === -1
-  //   ) {
-  //     return "wrong";
-  //   }
-  //   if (correctLetter === attemptLetter) {
-  //     return "correct";
-  //   }
-  //   return "present";
-  // }
   let color = getBgColor(guess, secret, index);
 
+  function getFlip(guess) {
+    for (let i = 0; i < guess.length; i++) {}
+  }
+
   function getTile() {
+    let div;
     if (submitted) {
-      return (
-        <div className={"tile"} style={{ backgroundColor: color }}>
+      div = (
+        <div
+          className={"tile flipIn"}
+          style={{ backgroundColor: color, border: "none" }}
+        >
           {content}
         </div>
       );
     } else if (!submitted && content) {
-      return <div className="tile active">{content}</div>;
+      div = <div className="tile active">{content}</div>;
     } else {
-      return <div className="tile">{content}</div>;
+      div = <div className="tile">{content}</div>;
     }
+    return div;
   }
+  let tile = getTile();
 
-  return (
-    <>
-      {getTile()}
-    </>
-  )
+  // function isActive() {
+  //   if (content && !submitted) {
+  //     return "tile active";
+  //   }
+  //   return "tile";
+  // }
+
+  return <>{tile}</>;
+  // return (
+  //   <div className={isActive()}>
+  //     <div className="inner">
+  //       <div className="front">{content}</div>
+  //       <div className="back">{content}</div>
+  //     </div>
+  //   </div>
+  // );
 };
 
 export default Tile;

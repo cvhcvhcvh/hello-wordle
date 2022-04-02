@@ -2343,7 +2343,7 @@ function makeWordObject(words) {
   return wordleObject
 }
 
- let GREY = "#212121";
+ let GREY = "#3A3A3C";
  let GREEN = "#538d4e";
  let YELLOW = "#b59f3b";
 

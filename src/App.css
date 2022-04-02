@@ -132,21 +132,86 @@ button {
   border: 2px solid rgba(128, 128, 128, 0.288);
 }
 .tile.active {
-  animation: zoom-in-zoom-out 50ms ease;
-  border-color: rgba(235, 235, 235, 0.244);
+  animation: zoom-in-zoom-out 25ms;
+  border-color: rgba(235, 235, 235, 0.3);
 }
-.tile.wrong {
+.tile .wrong {
   background-color: hsl(200, 1%, 20%);
   border: none;
 }
-.tile.present {
+.tile .present {
+  /* text-align: center;
+  vertical-align: center;
+  width: 100%;
+  height: 100%; */
   background-color: hsl(50, 50%, 50%);
   border: none;
 }
-.tile.correct {
+.tile .correct {
   background-color: hsl(115, 25%, 50%);
   border: none;
 }
+.tile .inner {
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+.tile .front {
+
+}
+.tile .back {
+
+}
+/* .tile .active .submitted {
+  transform: rotateX(180deg)
+} */
+
+.flipIn {
+  animation-name: FlipIn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in-out;
+}
+@keyframes FlipIn {
+  0% {
+    transform: rotateX(0);
+  }
+  50% {
+    transform: rotateX(-90deg);
+  }
+  75% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+}
+
+/* .flipIn {
+  animation-name: FlipIn;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in;
+}
+@keyframes FlipIn {
+  0% {
+    transform: rotateX(0);
+  }
+  100% {
+    transform: rotateX(90deg);
+  }
+}
+
+.flipOut {
+  animation-name: FlipOut;
+  animation-duration: 500ms;
+  animation-timing-function: ease-in;
+}
+@keyframes FlipOut {
+  0% {
+    transform: rotateX(-90deg);
+  }
+  100% {
+    transform: rotateX(0);
+  }
+} */
 
 .tile.shake {
   animation: shake 250ms ease-in-out;

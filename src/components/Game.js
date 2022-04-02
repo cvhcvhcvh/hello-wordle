@@ -10,10 +10,10 @@ const Game = () => {
   let [secret, setSecret] = useState("horse");
   let loadedRef = useRef(false);
 
-  const words = ["smile", "happy", "horse", "world", "snake", "patio", "piano"];
+  const words = ["smile", "happy", "horse", "world", "snake", "patio", "piano", "frank"];
 
   function getBetterColor(a, b) {
-    let GREY = "#212121";
+    let GREY = "#3A3A3C";
     let GREEN = "#538d4e";
     let YELLOW = "#b59f3b";
 
