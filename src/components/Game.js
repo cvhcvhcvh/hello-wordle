@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getBgColor, words} from "../wordleUtils";
+import { getBgColor, words, notInWordList} from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
@@ -111,9 +111,6 @@ const Game = () => {
       if (history.length === 5 && currentGuess !== secret) {
         alert(secret);
       }
-      setTimeout(() => {
-        
-      })
       let newHistory = [...history, currentGuess];
       setHistory(newHistory);
       setCurrentGuess("");

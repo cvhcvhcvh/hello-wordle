@@ -14,9 +14,7 @@ function shuffle(array) {
   return array;
 }
 
-
-
-export const  words = [
+export const words = [
   "cigar",
   "rebut",
   "sissy",
@@ -2345,47 +2343,53 @@ let wordList = shuffle(words);
 //   return wordleObject
 // }
 
- let GREY = "#3A3A3C";
- let GREEN = "#538d4e";
- let YELLOW = "#b59f3b";
- let BLACK = "#111"
+let GREY = "#3A3A3C";
+let GREEN = "#538d4e";
+let YELLOW = "#b59f3b";
+let BLACK = "#111";
 
-  export function getBgColor(guess, secret, index) {
-    let correctLetter = secret[index];
-    let attemptLetter = guess[index];
-    if (attemptLetter === undefined){
-      return BLACK
-    }
-    if (
-      // attemptLetter === undefined ||
-      secret.indexOf(attemptLetter) === -1
-    ) {
-      return GREY;
-    }
-    if (correctLetter === attemptLetter) {
-      return GREEN;
-    }
-    return YELLOW;
+export function getBgColor(guess, secret, index) {
+  let correctLetter = secret[index];
+  let attemptLetter = guess[index];
+  if (attemptLetter === undefined) {
+    return BLACK;
   }
+  if (
+    // attemptLetter === undefined ||
+    secret.indexOf(attemptLetter) === -1
+  ) {
+    return GREY;
+  }
+  if (correctLetter === attemptLetter) {
+    return GREEN;
+  }
+  return YELLOW;
+}
 
-   export function getBorderColor(guess, secret, index) {
-     let BORDER_GREY = "#313131";
-     let BORDER_GREEN = "#538d4e";
-     let BORDER_YELLOW = "#b59f3b";
+export function getBorderColor(guess, secret, index) {
+  let BORDER_GREY = "#313131";
+  let BORDER_GREEN = "#538d4e";
+  let BORDER_YELLOW = "#b59f3b";
 
-     let correctLetter = secret[index];
-     let attemptLetter = guess[index];
-     if (attemptLetter === undefined) {
-       return "grey";
-     }
-     if (
-       // attemptLetter === undefined ||
-       secret.indexOf(attemptLetter) === -1
-     ) {
-       return "grey";
-     }
-     if (correctLetter === attemptLetter) {
-       return BORDER_GREEN;
-     }
-     return BORDER_YELLOW;
-   }
+  let correctLetter = secret[index];
+  let attemptLetter = guess[index];
+  if (attemptLetter === undefined) {
+    return "grey";
+  }
+  if (
+    // attemptLetter === undefined ||
+    secret.indexOf(attemptLetter) === -1
+  ) {
+    return "grey";
+  }
+  if (correctLetter === attemptLetter) {
+    return BORDER_GREEN;
+  }
+  return BORDER_YELLOW;
+}
+
+export function notInWordList(grid) {
+  let div = <div>hey</div>
+  grid.appendChild(div)
+  return grid
+}

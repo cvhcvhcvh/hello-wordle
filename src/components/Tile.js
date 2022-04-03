@@ -15,26 +15,26 @@ const Tile = ({ guess, submitted, current, index, secret }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimateColor(getBgColor(guess, secret, index));
-    }, ((index + 2) * 330)/2);
+    }, ((index + 2) * 500)/2);
     return () => {
       clearTimeout(timer);
     };
   }, [submitted]);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setBorderColor(getBorderColor(guess, secret, index));
-    }, ((index + 2) * 330) / 2);
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [submitted]);
+  // useEffect(() => {
+  //   const timer = setTimeout(() => {
+  //     setBorderColor(getBorderColor(guess, secret, index));
+  //   }, ((index + 2) * 700) / 2);
+  //   return () => {
+  //     clearTimeout(timer);
+  //   };
+  // }, [submitted]);
 
 
   const style = {
     backgroundColor: animateColor,
     border: "",
-    animationDelay: (index * 175) / 2 + "ms",
+    animationDelay: (index * 550) / 2 + "ms",
   };
 
   const tile = function getTile() {
