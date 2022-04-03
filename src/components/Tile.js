@@ -34,7 +34,7 @@ const Tile = ({ guess, submitted, current, index, secret }) => {
   const style = {
     backgroundColor: animateColor,
     border: "",
-    animationDelay: (index * 550) / 2 + "ms",
+    animationDelay: (index * 500) / 2 + "ms",
   };
 
   const tile = function getTile() {

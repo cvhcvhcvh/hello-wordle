@@ -127,7 +127,7 @@ button {
 
 .tile.flipIn {
   animation-name: FlipIn;
-  animation-duration: 800ms;
+  animation-duration: 750ms;
   animation-timing-function: ease-in-out;
   /* animation-delay: 5s; */
 }
@@ -138,9 +138,9 @@ button {
   50% {
     transform: rotateX(-90deg);
   }
-  /* 75% {
+  75% {
     transform: rotateX(-90deg);
-  } */
+  }
   100% {
     transform: rotateX(0);
   }
