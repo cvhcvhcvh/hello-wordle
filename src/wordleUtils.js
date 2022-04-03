@@ -2346,13 +2346,16 @@ let wordList = shuffle(array);
  let GREY = "#3A3A3C";
  let GREEN = "#538d4e";
  let YELLOW = "#b59f3b";
+ let BLACK = "#111"
 
   export function getBgColor(guess, secret, index) {
-    // console.log("inside getBgColor")
     let correctLetter = secret[index];
     let attemptLetter = guess[index];
+    if (attemptLetter === undefined){
+      return BLACK
+    }
     if (
-      attemptLetter === undefined ||
+      // attemptLetter === undefined ||
       secret.indexOf(attemptLetter) === -1
     ) {
       return GREY;
@@ -2363,3 +2366,24 @@ let wordList = shuffle(array);
     return YELLOW;
   }
 
+   export function getBorderColor(guess, secret, index) {
+     let BORDER_GREY = "#313131";
+     let BORDER_GREEN = "#538d4e";
+     let BORDER_YELLOW = "#b59f3b";
+
+     let correctLetter = secret[index];
+     let attemptLetter = guess[index];
+     if (attemptLetter === undefined) {
+       return "grey";
+     }
+     if (
+       // attemptLetter === undefined ||
+       secret.indexOf(attemptLetter) === -1
+     ) {
+       return "grey";
+     }
+     if (correctLetter === attemptLetter) {
+       return BORDER_GREEN;
+     }
+     return BORDER_YELLOW;
+   }
