@@ -9,8 +9,8 @@ const Board = ({
 }) => {
  
   let rows = [];
-
-  for (let i = 0; i < 6; i++) {
+                                // history ["snake", "hello"]
+  for (let i = 0; i < 6; i++) { // i = 1
     if (i < history.length) {
       rows.push(
         <Guess
@@ -29,6 +29,7 @@ const Board = ({
           secret={secret}
           // getBgColor={getBgColor}
           submitted={false}
+          current={true}
         />
       );
     } else {

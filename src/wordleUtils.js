@@ -14,7 +14,9 @@ function shuffle(array) {
   return array;
 }
 
-let array = [
+
+
+export const  words = [
   "cigar",
   "rebut",
   "sissy",
@@ -2325,7 +2327,7 @@ let array = [
   "vomit",
   "fanny",
 ];
-let wordList = shuffle(array);
+let wordList = shuffle(words);
 
 // function makeWordObject(words) {
 //   let fullDate = new Date();

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { getBgColor, getBorderColor } from "../wordleUtils";
+import { getBgColor, getBorderColor, words } from "../wordleUtils";
 
-const Tile = ({ guess, submitted, index, secret }) => {
+const Tile = ({ guess, submitted, current, index, secret }) => {
   let [animateColor, setAnimateColor] = useState("#111");
   let [borderColor, setBorderColor] = useState("")
 
