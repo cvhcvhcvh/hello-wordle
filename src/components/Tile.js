@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { getBgColor } from "../wordleUtils";
 
 const Tile = ({ guess, submitted, index, secret }) => {
-  let [animated, setAnimated] = useState(false);
+  let [animateColor, setAnimateColor] = useState("");
+  let GREY = "#3A3A3C";
+  let GREEN = "#538d4e";
+  let YELLOW = "#b59f3b";
 
   let content;
   if (guess[index]) {
@@ -11,20 +14,38 @@ const Tile = ({ guess, submitted, index, secret }) => {
     content = "";
   }
 
-  let color = getBgColor(guess, secret, index);
-
-  function getFlip(guess) {
-    for (let i = 0; i < guess.length; i++) {}
+  function color() {
+    var promise = new Promise(function (resolve, reject) {
+      setTimeout(function () {
+        resolve(getBgColor(guess, secret, index));
+      }, 2000);
+    });
+    return promise;
   }
 
-  function getTile() {
+  // color().then(function (value) {
+  //   console.log("value is", value);
+  // });
+
+  async function test() {
+    const result = await color();
+  }
+
+  // let color = getBgColor(guess, secret, index); // ?this works
+
+  // let color = setTimeout(getBgColor(guess, secret, index), 2000); // !this doesn't work
+
+  const style = {
+    backgroundColor: "",
+    border: "none",
+    animationDelay: (index * 300) / 2 + "ms",
+  };
+
+  const tile = function getTile() {
     let div;
     if (submitted) {
       div = (
-        <div
-          className={"tile flipIn"}
-          style={{ backgroundColor: color, border: "none" }}
-        >
+        <div className={"tile flipIn"} style={style}>
           {content}
         </div>
       );
@@ -34,8 +55,7 @@ const Tile = ({ guess, submitted, index, secret }) => {
       div = <div className="tile">{content}</div>;
     }
     return div;
-  }
-  let tile = getTile();
+  };
 
   // function isActive() {
   //   if (content && !submitted) {
@@ -44,7 +64,7 @@ const Tile = ({ guess, submitted, index, secret }) => {
   //   return "tile";
   // }
 
-  return <>{tile}</>;
+  return <>{tile()}</>;
   // return (
   //   <div className={isActive()}>
   //     <div className="inner">
@@ -54,5 +74,4 @@ const Tile = ({ guess, submitted, index, secret }) => {
   //   </div>
   // );
 };
-
 export default Tile;

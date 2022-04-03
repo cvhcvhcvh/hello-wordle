@@ -111,7 +111,9 @@ const Game = () => {
       if (history.length === 5 && currentGuess !== secret) {
         alert(secret);
       }
-
+      setTimeout(() => {
+        
+      })
       let newHistory = [...history, currentGuess];
       setHistory(newHistory);
       setCurrentGuess("");

@@ -2327,27 +2327,28 @@ let array = [
 ];
 let wordList = shuffle(array);
 
-function makeWordObject(words) {
-  let fullDate = new Date();
-  let wordleObject = words.reduce((wordsObject, word) => {
-    let shortDate =
-      fullDate.getMonth() +
-      "-" +
-      fullDate.getDate() +
-      "-" +
-      fullDate.getFullYear();
-    wordsObject[shortDate] = word;
-    fullDate.setDate(fullDate.getDate() + 1);
-    return wordsObject;
-  }, {});
-  return wordleObject
-}
+// function makeWordObject(words) {
+//   let fullDate = new Date();
+//   let wordleObject = words.reduce((wordsObject, word) => {
+//     let shortDate =
+//       fullDate.getMonth() +
+//       "-" +
+//       fullDate.getDate() +
+//       "-" +
+//       fullDate.getFullYear();
+//     wordsObject[shortDate] = word;
+//     fullDate.setDate(fullDate.getDate() + 1);
+//     return wordsObject;
+//   }, {});
+//   return wordleObject
+// }
 
  let GREY = "#3A3A3C";
  let GREEN = "#538d4e";
  let YELLOW = "#b59f3b";
 
   export function getBgColor(guess, secret, index) {
+    // console.log("inside getBgColor")
     let correctLetter = secret[index];
     let attemptLetter = guess[index];
     if (

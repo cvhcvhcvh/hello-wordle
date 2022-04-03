@@ -1,5 +1,4 @@
 import Key from "./Key";
-import { getBgColor } from "../wordleUtils";
 
 const Keyboard = ({ history, currentGuess, secret, onKey, bestColors }) => {
   const keys1 = ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"];
