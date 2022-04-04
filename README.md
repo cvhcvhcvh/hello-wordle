@@ -1,5 +1,3 @@
-You can view my (mostly-finished-but-in-dire-need-of-edits) project at https://cvhcvhcvh.github.io/hello-worldle/.
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
