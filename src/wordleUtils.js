@@ -2346,7 +2346,7 @@ let wordList = shuffle(words);
 let GREY = "#3A3A3C";
 let GREEN = "#538d4e";
 let YELLOW = "#b59f3b";
-let BLACK = "#111";
+let BLACK = "#121213";
 
 export function getBgColor(guess, secret, index) {
   let correctLetter = secret[index];

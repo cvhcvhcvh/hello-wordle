@@ -1,12 +1,19 @@
 *,
 *::before,
 *::after {
-  background-color: #111;
+  background-color: #121213;
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
   padding: 0;
   margin: 0;
 }
+/* body {
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: clamp(0.5em, 2.5vmin, 1rem);
+} */
 
 .header {
   color: #fff;
@@ -14,9 +21,9 @@
   border-bottom: 1px solid rgba(194, 194, 194, 0.322);
   width: 100%;
   padding: 8px;
-
-  /* height: 50px; */
+  margin: 0;
 }
+
 
 #game {
   width: 100%;
@@ -26,11 +33,31 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 95vh;
   resize: both;
-  /* justify-content: center; */
+  flex-grow: 1;
 }
 
+#board-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  overflow: hidden;
+}
+#board {
+  width: 350px;
+  height: 420px;
+  display: grid;
+  grid-template-rows: repeat(6, 1fr);
+  grid-gap: 5px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.board.row {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 5px;
+}
 #keyboard {
   width: 100%;
   margin: 0 8px;
@@ -65,7 +92,6 @@ button {
   text-transform: uppercase;
 }
 .key {
-  /* font-family: inherit; */
   font-weight: bold;
   border: 0;
   padding: 0;
@@ -74,7 +100,6 @@ button {
   border-radius: 4px;
   cursor: pointer;
   user-select: none;
-  /* background-color: rgba(211, 211, 211, 0.63); */
   color: white;
   flex: 1;
   display: flex;
@@ -83,31 +108,10 @@ button {
   text-transform: uppercase;
 }
 
-#board-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-grow: 1;
-  overflow: hidden;
-}
-#board {
-  width: 350px;
-  height: 420px;
-  display: grid;
-  grid-template-rows: repeat(6, 1fr);
-  grid-gap: 5px;
-  padding: 10px;
-  box-sizing: border-box;
-}
-.board.row {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 5px;
-}
 
 .tile {
   width: 100%;
-  display: inline-flex; /* why inline-flex and not flex? */
+  display: inline-flex; 
   justify-content: center;
   align-items: center;
   font-size: 2rem;
@@ -129,8 +133,8 @@ button {
   animation-name: FlipIn;
   animation-duration: 750ms;
   animation-timing-function: ease-in-out;
-  /* animation-delay: 5s; */
 }
+
 @keyframes FlipIn {
   0% {
     transform: rotateX(0);
@@ -145,34 +149,6 @@ button {
     transform: rotateX(0);
   }
 }
-
-/* .flipIn {
-  animation-name: FlipIn;
-  animation-duration: 500ms;
-  animation-timing-function: ease-in;
-}
-@keyframes FlipIn {
-  0% {
-    transform: rotateX(0);
-  }
-  100% {
-    transform: rotateX(90deg);
-  }
-}
-
-.flipOut {
-  animation-name: FlipOut;
-  animation-duration: 500ms;
-  animation-timing-function: ease-in;
-}
-@keyframes FlipOut {
-  0% {
-    transform: rotateX(-90deg);
-  }
-  100% {
-    transform: rotateX(0);
-  }
-} */
 
 .tile.shake {
   animation: shake 250ms ease-in-out;

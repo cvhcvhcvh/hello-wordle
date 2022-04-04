@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getBgColor, words, notInWordList} from "../wordleUtils";
+import { getBgColor, words, notInWordList } from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
@@ -125,7 +125,7 @@ const Game = () => {
 
   // let color = getBgColor(currentGuess, secret);
   return (
-    <div className="header-line">
+    <div>
       <Header />
       <div id="game">
         <div id="board-container">
