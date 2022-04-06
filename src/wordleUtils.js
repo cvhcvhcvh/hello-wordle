@@ -2325,7 +2325,7 @@ export const words = [
   "vomit",
   "fanny",
 ];
-let wordList = shuffle(words);
+export const wordList = shuffle(words);
 
 // function makeWordObject(words) {
 //   let fullDate = new Date();

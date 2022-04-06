@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getBgColor, words, notInWordList } from "../wordleUtils";
+import { getBgColor, words, notInWordList, wordList } from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
@@ -7,7 +7,7 @@ import Header from "./Header";
 const Game = () => {
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
-  let [secret, setSecret] = useState("horse");
+  let [secret, setSecret] = useState("react");
   let loadedRef = useRef(false);
 
   // const words = ["smile", "happy", "hello", "world", "horse", "world", "snake", "patio", "piano", "frank"];
