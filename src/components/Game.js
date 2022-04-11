@@ -7,7 +7,7 @@ import Header from "./Header";
 const Game = () => {
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
-  let [secret, setSecret] = useState("react");
+  let [secret, setSecret] = useState("petty");
   let [win, setWin] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false)
 
