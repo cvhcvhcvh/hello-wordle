@@ -2334,9 +2334,9 @@ export function getBgColor(guess, secret, index) {
 }
 
 export function getBorderColor(guess, secret, index) {
-  let BORDER_GREY = "#313131";
-  let BORDER_GREEN = "#538d4e";
-  let BORDER_YELLOW = "#b59f3b";
+  const BORDER_GREY = "#313131";
+  const BORDER_GREEN = "#538d4e";
+  const BORDER_YELLOW = "#b59f3b";
 
   let correctLetter = secret[index];
   let attemptLetter = guess[index];
@@ -2355,12 +2355,27 @@ export function getBorderColor(guess, secret, index) {
   return BORDER_YELLOW;
 }
 
-export function dailyWord(words, number) {
-  return words[number]
+function getWord(words) {
+  const ms = 86400000;
+  const start = new Date(2022, 3, 10).valueOf();
+  let today = Date.now() - start;
+  let index = Math.floor(today / ms);
+  return words[index];
 }
 
-function getTime() {
-  // get date as of today in a single number to be called as an index on words list
+export let secret = getWord(words);
 
-  
+export function getBetterColor(a, b) {
+  let GREY = "#3A3A3C";
+  let GREEN = "#538d4e";
+  let YELLOW = "#b59f3b";
+
+  if (a === GREEN || b === GREEN) {
+    return GREEN;
+  }
+
+  if (a === YELLOW || b === YELLOW) {
+    return YELLOW;
+  }
+  return GREY;
 }

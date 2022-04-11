@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { getBgColor, getBorderColor, words } from "../wordleUtils";
+import { getBgColor } from "../wordleUtils";
 
-const Tile = ({ guess, submitted, current, index, secret }) => {
-  let [animateColor, setAnimateColor] = useState("#111");
-  let [borderColor, setBorderColor] = useState("");
-  const [isAnimating, setIsAnimating] = useState(false)
+const Tile = ({ guess, submitted, index, secret }) => {
+  const [animateColor, setAnimateColor] = useState("#111");
+  // const [borderColor, setBorderColor] = useState("");
 
   let content;
   if (guess[index]) {
@@ -14,18 +13,13 @@ const Tile = ({ guess, submitted, current, index, secret }) => {
   }
 
   useEffect(() => {
-    setIsAnimating(true)
     const timer = setTimeout(() => {
       setAnimateColor(getBgColor(guess, secret, index));
-      setIsAnimating(false)
     }, ((index + 2) * 500) / 2);
     return () => {
       clearTimeout(timer);
     };
   }, [submitted]);
-
-
-
 
   const style = {
     backgroundColor: animateColor,

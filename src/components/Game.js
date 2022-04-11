@@ -1,79 +1,55 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getBgColor, words } from "../wordleUtils";
+import { getBgColor, words, getBetterColor } from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
 
-const Game = () => {
-  let [history, setHistory] = useState([]);
-  let [currentGuess, setCurrentGuess] = useState("");
-  let [secret, setSecret] = useState("");
-  let [win, setWin] = useState(false);
+const Game = ({ secret }) => {
+  const [history, setHistory] = useState([]);
+  const [currentGuess, setCurrentGuess] = useState("");
+  // const [secret, setSecret] = useState("");
+  const [win, setWin] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
+  let loadedRef = useRef(false);
 
-  function getWord(words) {
-    const ms = 86400000;
-    const start = new Date(2022, 3, 10).valueOf();
-    let today = Date.now() - start;
-    let index = Math.floor(today / ms);
-    return words[index]
-  }
+  console.log("secret is", secret);
 
-  let word = getWord(words)
-
-  useEffect(() => {
-    setSecret(word)
-  }, [word])
-  
-
-  function getBetterColor(a, b) {
-    let GREY = "#3A3A3C";
-    let GREEN = "#538d4e";
-    let YELLOW = "#b59f3b";
-
-    if (a === GREEN || b === GREEN) {
-      return GREEN;
-    }
-
-    if (a === YELLOW || b === YELLOW) {
-      return YELLOW;
-    }
-    return GREY;
-  }
+  // useEffect(() => {
+  //   setSecret(word);
+  // }, []);
 
   let bestColors = useMemo(() => {
-    // guess = "horse", secret = "horse"
-    let map = new Map(); // {}
+    let map = new Map();
     for (let guess of history) {
-      // horse
       for (let i = 0; i < guess.length; i++) {
-        // i = 0
-        let letter = guess[i]; // h
-        let color = getBgColor(guess, secret, i); // grey
-        let storedColor = map.get(letter); // grey
-        map.set(letter, getBetterColor(color, storedColor)); // o => (grey, grey)
-        // map { t => grey, o => yellow }
+        let letter = guess[i];
+        let color = getBgColor(guess, secret, i);
+        let storedColor = map.get(letter);
+        map.set(letter, getBetterColor(color, storedColor));
       }
     }
     return map;
   }, [history]);
 
   useEffect(() => {
+    if (loadedRef.current) {
+      return;
+    }
+    loadedRef.current = true;
     let savedHistory = loadHistory();
     if (savedHistory) {
       setHistory(savedHistory);
     }
-  }, []);
+  });
 
   useEffect(() => {
     saveHistory();
   }, [history]);
 
   function loadHistory() {
-    let data;
-    try {
-      data = JSON.parse(localStorage.getItem("data"));
-    } catch {}
+    let data = JSON.parse(localStorage.getItem("data"));
+    // console.log("in loadHistory, secret is", data.secret);
+
     if (data != null) {
       if (data.secret === secret) {
         return data.history;
@@ -90,8 +66,6 @@ const Game = () => {
       localStorage.setItem("data", data);
     } catch {}
   }
-
-  console.log("is animating", isAnimating);
 
   useEffect(() => {
     if (win) {
@@ -143,7 +117,6 @@ const Game = () => {
       setTimeout(() => {
         setIsAnimating(false);
       }, 2000);
-
       setIsAnimating(true);
     } else if (letter === "backspace" || letter === "delete") {
       setCurrentGuess(currentGuess.slice(0, currentGuess.length - 1));
@@ -154,7 +127,6 @@ const Game = () => {
     }
   }
 
-  // let color = getBgColor(currentGuess, secret);
   return (
     <div>
       <Header />
@@ -164,11 +136,9 @@ const Game = () => {
             history={history}
             currentGuess={currentGuess}
             secret={secret}
-            // getBgColor={getBgColor}
           />
         </div>
         <Keyboard
-          // getBgColor={getBgColor}
           history={history}
           currentGuess={currentGuess}
           secret={secret}
