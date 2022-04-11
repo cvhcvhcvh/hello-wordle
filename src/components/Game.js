@@ -8,7 +8,8 @@ const Game = () => {
   let [history, setHistory] = useState([]);
   let [currentGuess, setCurrentGuess] = useState("");
   let [secret, setSecret] = useState("react");
-  let loadedRef = useRef(false);
+  let [win, setWin] = useState(false);
+  const [isAnimating, setIsAnimating] = useState(false)
 
   // const words = ["smile", "happy", "hello", "world", "horse", "world", "snake", "patio", "piano", "frank"];
 
@@ -45,15 +46,11 @@ const Game = () => {
   }, [history]);
 
   useEffect(() => {
-    if (loadedRef.current) {
-      return;
-    }
-    loadedRef.current = true;
     let savedHistory = loadHistory();
     if (savedHistory) {
       setHistory(savedHistory);
     }
-  });
+  }, []);
 
   useEffect(() => {
     saveHistory();
@@ -81,7 +78,23 @@ const Game = () => {
     } catch {}
   }
 
+  console.log("is animating", isAnimating)
+
   useEffect(() => {
+    if (win) {
+      return;
+    }
+
+    if (isAnimating){
+      return;
+    }
+
+    for (let word of history) {
+      if (word === secret) {
+        setWin(true);
+      }
+    }
+
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   });
@@ -110,10 +123,18 @@ const Game = () => {
       }
       if (history.length === 5 && currentGuess !== secret) {
         alert(secret);
+        return;
       }
+
       let newHistory = [...history, currentGuess];
       setHistory(newHistory);
       setCurrentGuess("");
+      setIsAnimating(true)
+      setTimeout(() => {
+        setIsAnimating(false)
+      }, 2000)
+
+      setIsAnimating(true)
     } else if (letter === "backspace" || letter === "delete") {
       setCurrentGuess(currentGuess.slice(0, currentGuess.length - 1));
     } else if (/^[a-z]$/.test(letter)) {

@@ -1,22 +1,22 @@
-
 import Guess from "./Guess";
 
 const Board = ({
-  history, 
-  currentGuess, 
-  secret, 
+  history,
+  currentGuess,
+  secret,
   // getBgColor
 }) => {
- 
   let rows = [];
-                                // history ["snake", "hello"]
-  for (let i = 0; i < 6; i++) { // i = 1
+  console.log("history is", history)
+
+  for (let i = 0; i < 6; i++) {
+    // i = 1
     if (i < history.length) {
       rows.push(
         <Guess
           key={i}
           guess={history[i]}
-          secret={secret} // 
+          secret={secret} //
           // getBgColor={getBgColor}
           submitted={true} //
         />
@@ -50,18 +50,3 @@ const Board = ({
 
 export default Board;
 
-// const Grid = () => {
-//   const emptyTiles = Array(30).fill("")
-
-//   return (
-//       <div id="grid">
-//         <div className="grid-row">
-//           {emptyTiles.map((value, i) => (
-//             <Tile key={i} value={value}/>
-//           ))}
-//         </div>
-//       </div>
-//   )
-// }
-
-// export default Grid

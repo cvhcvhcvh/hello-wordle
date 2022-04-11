@@ -3,7 +3,8 @@ import { getBgColor, getBorderColor, words } from "../wordleUtils";
 
 const Tile = ({ guess, submitted, current, index, secret }) => {
   let [animateColor, setAnimateColor] = useState("#111");
-  let [borderColor, setBorderColor] = useState("")
+  let [borderColor, setBorderColor] = useState("");
+  const [isAnimating, setIsAnimating] = useState(false)
 
   let content;
   if (guess[index]) {
@@ -13,22 +14,17 @@ const Tile = ({ guess, submitted, current, index, secret }) => {
   }
 
   useEffect(() => {
+    setIsAnimating(true)
     const timer = setTimeout(() => {
       setAnimateColor(getBgColor(guess, secret, index));
-    }, ((index + 2) * 500)/2);
+      setIsAnimating(false)
+    }, ((index + 2) * 500) / 2);
     return () => {
       clearTimeout(timer);
     };
   }, [submitted]);
 
-  // useEffect(() => {
-  //   const timer = setTimeout(() => {
-  //     setBorderColor(getBorderColor(guess, secret, index));
-  //   }, ((index + 2) * 700) / 2);
-  //   return () => {
-  //     clearTimeout(timer);
-  //   };
-  // }, [submitted]);
+
 
 
   const style = {
@@ -53,21 +49,6 @@ const Tile = ({ guess, submitted, current, index, secret }) => {
     return div;
   };
 
-  // function isActive() {
-  //   if (content && !submitted) {
-  //     return "tile active";
-  //   }
-  //   return "tile";
-  // }
-
   return <>{tile()}</>;
-  // return (
-  //   <div className={isActive()}>
-  //     <div className="inner">
-  //       <div className="front">{content}</div>
-  //       <div className="back">{content}</div>
-  //     </div>
-  //   </div>
-  // );
 };
 export default Tile;

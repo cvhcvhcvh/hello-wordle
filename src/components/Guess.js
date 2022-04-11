@@ -1,4 +1,4 @@
-import React from "react";
+
 import Tile from "./Tile";
 
 const Guess = ({ guess, submitted, current, secret, getBgColor }) => {
