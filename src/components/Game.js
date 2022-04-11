@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getBgColor, words, notInWordList, wordList } from "../wordleUtils";
+import { getBgColor, words } from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
@@ -9,9 +9,22 @@ const Game = () => {
   let [currentGuess, setCurrentGuess] = useState("");
   let [secret, setSecret] = useState("chomp");
   let [win, setWin] = useState(false);
-  const [isAnimating, setIsAnimating] = useState(false)
+  const [isAnimating, setIsAnimating] = useState(false);
 
-  // const words = ["smile", "happy", "hello", "world", "horse", "world", "snake", "patio", "piano", "frank"];
+  function getWord(words) {
+    const ms = 86400000;
+    const start = new Date(2022, 3, 10).valueOf();
+    let today = Date.now() - start;
+    let index = Math.floor(today / ms);
+    return words[index]
+  }
+
+  let word = getWord(words)
+
+  useEffect(() => {
+    setSecret(word)
+  }, [word])
+  
 
   function getBetterColor(a, b) {
     let GREY = "#3A3A3C";
@@ -78,23 +91,20 @@ const Game = () => {
     } catch {}
   }
 
-  console.log("is animating", isAnimating)
+  console.log("is animating", isAnimating);
 
   useEffect(() => {
     if (win) {
       return;
     }
-
-    if (isAnimating){
+    if (isAnimating) {
       return;
     }
-
     for (let word of history) {
       if (word === secret) {
         setWin(true);
       }
     }
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   });
@@ -129,12 +139,12 @@ const Game = () => {
       let newHistory = [...history, currentGuess];
       setHistory(newHistory);
       setCurrentGuess("");
-      setIsAnimating(true)
+      setIsAnimating(true);
       setTimeout(() => {
-        setIsAnimating(false)
-      }, 2000)
+        setIsAnimating(false);
+      }, 2000);
 
-      setIsAnimating(true)
+      setIsAnimating(true);
     } else if (letter === "backspace" || letter === "delete") {
       setCurrentGuess(currentGuess.slice(0, currentGuess.length - 1));
     } else if (/^[a-z]$/.test(letter)) {
