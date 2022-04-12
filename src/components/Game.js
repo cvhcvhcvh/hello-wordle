@@ -137,8 +137,8 @@ const Game = ({ secret }) => {
 
   return (
     <div>
-      <Header />
       <div id="game">
+      <Header />
         {alert ? <Alert alert={alert} type={type} /> : ""}
         <div id="board-container">
           <Board
