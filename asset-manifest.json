@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/hello-worldle/static/css/main.d4010d9e.css",
-    "main.js": "/hello-worldle/static/js/main.72dc1b86.js",
+    "main.css": "/hello-worldle/static/css/main.921a32c5.css",
+    "main.js": "/hello-worldle/static/js/main.57b05181.js",
     "index.html": "/hello-worldle/index.html",
-    "main.d4010d9e.css.map": "/hello-worldle/static/css/main.d4010d9e.css.map",
-    "main.72dc1b86.js.map": "/hello-worldle/static/js/main.72dc1b86.js.map"
+    "main.921a32c5.css.map": "/hello-worldle/static/css/main.921a32c5.css.map",
+    "main.57b05181.js.map": "/hello-worldle/static/js/main.57b05181.js.map"
   },
   "entrypoints": [
-    "static/css/main.d4010d9e.css",
-    "static/js/main.72dc1b86.js"
+    "static/css/main.921a32c5.css",
+    "static/js/main.57b05181.js"
   ]
 }
