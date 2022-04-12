@@ -1,7 +1,7 @@
 
 import Tile from "./Tile";
 
-const Guess = ({ guess, submitted, current, secret }) => {
+const Guess = ({ guess, submitted, current, secret, alert }) => {
   let tiles = [];
   for (let i = 0; i < 5; i++) {
     tiles.push(
@@ -12,6 +12,7 @@ const Guess = ({ guess, submitted, current, secret }) => {
         submitted={submitted}
         secret={secret}
         current={current}
+        alert={alert}
       />
     );
   }

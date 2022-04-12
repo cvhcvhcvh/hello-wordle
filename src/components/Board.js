@@ -1,6 +1,6 @@
 import Guess from "./Guess";
 
-const Board = ({ history, currentGuess, secret }) => {
+const Board = ({ history, currentGuess, secret, alert }) => {
   let rows = [];
 
   for (let i = 0; i < 6; i++) {
@@ -11,6 +11,7 @@ const Board = ({ history, currentGuess, secret }) => {
           guess={history[i]}
           secret={secret} //
           submitted={true} //
+          alert={alert}
         />
       );
     } else if (i === history.length) {
@@ -21,10 +22,19 @@ const Board = ({ history, currentGuess, secret }) => {
           secret={secret}
           submitted={false}
           current={true}
+          alert={alert}
         />
       );
     } else {
-      rows.push(<Guess key={i} guess="" secret={secret} submitted={false} />);
+      rows.push(
+        <Guess
+          key={i}
+          guess=""
+          secret={secret}
+          submitted={false}
+          alert={alert}
+        />
+      );
     }
   }
 

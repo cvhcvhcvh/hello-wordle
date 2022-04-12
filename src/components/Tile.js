@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { getBgColor } from "../wordleUtils";
 
-const Tile = ({ guess, submitted, index, secret }) => {
+const Tile = ({ guess, submitted, index, secret, alert }) => {
   const [animateColor, setAnimateColor] = useState("#111");
   // const [borderColor, setBorderColor] = useState("");
+
+  console.log("alert is", alert);
 
   let content;
   if (guess[index]) {
@@ -27,6 +29,8 @@ const Tile = ({ guess, submitted, index, secret }) => {
     animationDelay: (index * 500) / 2 + "ms",
   };
 
+  const alertStyle = {};
+
   const tile = function getTile() {
     let div;
     if (submitted) {
@@ -35,6 +39,8 @@ const Tile = ({ guess, submitted, index, secret }) => {
           {content}
         </div>
       );
+    } else if (!submitted && alert && content) {
+      div = <div className={"tile shake"}>{content}</div>;
     } else if (!submitted && content) {
       div = <div className="tile active">{content}</div>;
     } else {

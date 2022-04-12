@@ -10,7 +10,8 @@ const Game = ({ secret }) => {
   const [currentGuess, setCurrentGuess] = useState("");
   const [win, setWin] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  const [alert, setAlert] = useState(false)
+  const [alert, setAlert] = useState(false);
+  const [type, setType] = useState("");
 
   let bestColors = useMemo(() => {
     let map = new Map();
@@ -89,6 +90,7 @@ const Game = ({ secret }) => {
     if (letter === "enter") {
       if (currentGuess.length < 5) {
         setAlert(true);
+        setType("Not enough letters");
         setTimeout(() => {
           setAlert(false);
         }, 1000);
@@ -96,6 +98,7 @@ const Game = ({ secret }) => {
       }
       if (!words.includes(currentGuess)) {
         setAlert(true);
+        setType("Not in word list");
         setTimeout(() => {
           setAlert(false);
         }, 1000);
@@ -127,12 +130,13 @@ const Game = ({ secret }) => {
     <div>
       <Header />
       <div id="game">
-        <Alert alert={alert} type="Not enough letters" />
+        <Alert alert={alert} type={type} />
         <div id="board-container">
           <Board
             history={history}
             currentGuess={currentGuess}
             secret={secret}
+            alert={alert}
           />
         </div>
         <Keyboard

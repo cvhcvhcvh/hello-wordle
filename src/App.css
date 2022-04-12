@@ -142,8 +142,10 @@ button {
 }
 
 .tile.shake {
-  animation: shake 250ms ease-in-out;
+  border-color: rgba(235, 235, 235, 0.3);
+  animation: shake 280ms ease-in-out;
 }
+
 @keyframes zoom-in-zoom-out {
   0% {
     transform: scale(1, 1);
@@ -155,6 +157,7 @@ button {
     transform: scale(1, 1);
   }
 }
+
 @keyframes shake {
   10% {
     transform: translateX(-5%);
@@ -226,7 +229,7 @@ button {
 .alert.hidden {
   visibility: hidden;
   opacity: 0;
-  transition: visibility .5s, opacity .5s linear;
+  transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .alert:last-child {
