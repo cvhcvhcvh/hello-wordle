@@ -220,8 +220,13 @@ button {
   border-radius: 0.25em;
   opacity: 1;
   transition: opacity 500ms ease-in-out;
-  /* look up this ^ */
   margin-bottom: 0.5em;
+  z-index: 1;
+}
+.alert.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .5s, opacity .5s linear;
 }
 
 .alert:last-child {

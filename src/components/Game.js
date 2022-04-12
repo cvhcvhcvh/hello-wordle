@@ -3,20 +3,14 @@ import { getBgColor, words, getBetterColor } from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
+import Alert from "./Alert";
 
 const Game = ({ secret }) => {
   const [history, setHistory] = useState([]);
   const [currentGuess, setCurrentGuess] = useState("");
-  // const [secret, setSecret] = useState("");
   const [win, setWin] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
-  let loadedRef = useRef(false);
-
-  console.log("secret is", secret);
-
-  // useEffect(() => {
-  //   setSecret(word);
-  // }, []);
+  const [alert, setAlert] = useState(false)
 
   let bestColors = useMemo(() => {
     let map = new Map();
@@ -32,15 +26,11 @@ const Game = ({ secret }) => {
   }, [history]);
 
   useEffect(() => {
-    if (loadedRef.current) {
-      return;
-    }
-    loadedRef.current = true;
     let savedHistory = loadHistory();
     if (savedHistory) {
       setHistory(savedHistory);
     }
-  });
+  }, []);
 
   useEffect(() => {
     saveHistory();
@@ -98,11 +88,17 @@ const Game = ({ secret }) => {
 
     if (letter === "enter") {
       if (currentGuess.length < 5) {
-        alert("not enough letters");
+        setAlert(true);
+        setTimeout(() => {
+          setAlert(false);
+        }, 1000);
         return;
       }
       if (!words.includes(currentGuess)) {
-        alert("word not in list");
+        setAlert(true);
+        setTimeout(() => {
+          setAlert(false);
+        }, 1000);
         return;
       }
       if (history.length === 5 && currentGuess !== secret) {
@@ -131,6 +127,7 @@ const Game = ({ secret }) => {
     <div>
       <Header />
       <div id="game">
+        <Alert alert={alert} type="Not enough letters" />
         <div id="board-container">
           <Board
             history={history}
