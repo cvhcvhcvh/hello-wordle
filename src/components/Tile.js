@@ -5,8 +5,6 @@ const Tile = ({ guess, submitted, index, secret, alert }) => {
   const [animateColor, setAnimateColor] = useState("#111");
   // const [borderColor, setBorderColor] = useState("");
 
-  console.log("alert is", alert);
-
   let content;
   if (guess[index]) {
     content = guess[index];
@@ -29,10 +27,9 @@ const Tile = ({ guess, submitted, index, secret, alert }) => {
     animationDelay: (index * 500) / 2 + "ms",
   };
 
-  const alertStyle = {};
-
   const tile = function getTile() {
     let div;
+
     if (submitted) {
       div = (
         <div className={"tile flipIn"} style={style}>

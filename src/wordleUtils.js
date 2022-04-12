@@ -2379,3 +2379,11 @@ export function getBetterColor(a, b) {
   }
   return GREY;
 }
+
+function winningPhrase() {
+  let phrases = ["Phew", "Genius", "Wow", "Nice"]
+  let idx = Math.floor(Math.random() * phrases.length)
+  return phrases[idx]
+}
+
+export let congrats = winningPhrase()

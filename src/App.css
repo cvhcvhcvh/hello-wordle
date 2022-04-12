@@ -179,6 +179,9 @@ button {
   }
 }
 
+.tile.dance {
+  animation: dance 500ms ease-in-out;
+}
 @keyframes dance {
   20% {
     transform: translateY(-50%);
@@ -200,9 +203,6 @@ button {
   }
 }
 
-.tile.dance {
-  animation: dance 500ms ease-in-out;
-}
 
 .alert-container {
   position: fixed;
@@ -222,20 +222,12 @@ button {
   padding: 1em;
   border-radius: 0.25em;
   opacity: 1;
-  transition: opacity 500ms ease-in-out;
   margin-bottom: 0.5em;
   z-index: 1;
 }
+
 .alert.hidden {
   visibility: hidden;
   opacity: 0;
   transition: visibility 0.5s, opacity 0.5s linear;
-}
-
-.alert:last-child {
-  margin-bottom: 0;
-}
-
-.alert.hide {
-  opacity: 0;
 }

@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useMemo } from "react";
-import { getBgColor, words, getBetterColor } from "../wordleUtils";
+import { getBgColor, words, getBetterColor, congrats } from "../wordleUtils";
 import Board from "./Board";
 import Keyboard from "./Keyboard";
 import Header from "./Header";
@@ -68,6 +68,10 @@ const Game = ({ secret }) => {
     for (let word of history) {
       if (word === secret) {
         setWin(true);
+        setTimeout(() => {
+          setAlert(true);
+          setType(congrats);
+        }, 2000);
       }
     }
     window.addEventListener("keydown", handleKeyDown);
@@ -88,6 +92,10 @@ const Game = ({ secret }) => {
     let letter = e.toLowerCase();
 
     if (letter === "enter") {
+      // if (win) {
+      //   setAlert(true);
+      //   setType("Phew");
+      // }
       if (currentGuess.length < 5) {
         setAlert(true);
         setType("Not enough letters");
@@ -105,7 +113,8 @@ const Game = ({ secret }) => {
         return;
       }
       if (history.length === 5 && currentGuess !== secret) {
-        alert(secret);
+        setAlert(true);
+        setType(secret);
         return;
       }
 
