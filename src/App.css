@@ -223,7 +223,6 @@ button {
   border-radius: 0.25em;
   opacity: 1;
   margin-bottom: 0.5em;
-  z-index: 1;
 }
 
 .alert.hidden {
