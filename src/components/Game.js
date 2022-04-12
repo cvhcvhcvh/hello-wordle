@@ -139,7 +139,7 @@ const Game = ({ secret }) => {
     <div>
       <Header />
       <div id="game">
-        <Alert alert={alert} type={type} />
+        {alert ? <Alert alert={alert} type={type} /> : ""}
         <div id="board-container">
           <Board
             history={history}
